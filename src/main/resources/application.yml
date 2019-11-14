@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: eureka-server
+
+server:
+  port: 8761
+
+management:
+  server:
+    port: 8762
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      showDetails: ALWAYS
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: false
+
+---
+
+spring:
+  profiles: test-docker-compose
+  cloud:
+    inetutils:
+      preferredNetworks:
+        - 10.0.10
